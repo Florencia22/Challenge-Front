@@ -4,32 +4,22 @@ import './App.css';
 //import Demo from './Components/Demo';
 //import ResultItem from './Components/ResultItem';
 import ResultList from './Components/ResultList';
-import SearchBox from './Components/SearchBox';
+import SearchMovie from './Components/SearchMovie';
 
 
 class App extends React.Component{
   constructor(props){
     super(props);
     this.state = {
-      items:""
+       items:""
     }
   }
   
-  componentDidMount(){
-    fetch('https://api.mercadolibre.com/sites/MLA/search?q=atari%202600')
-    .then(res=>{ return res.json();})
-    .then((json) => {
-      if(json !== undefined){
-        this.setState({ items: json });
-        console.log(this.state.items.results);
-      }
-    })
-  }
   search = (datos) => {
     const DATO = datos;
     console.log(DATO);
 
-    fetch("https://api.mercadolibre.com/sites/MLA/search?q=" + encodeURI(DATO))
+    fetch('http://localhost:4200/search/movies/'+ DATO)
     .then(res => { return res.json();})
     .then((json) => {
       if(json !== undefined){
@@ -41,10 +31,10 @@ class App extends React.Component{
   render(){
     return (
       <div className="App">
-        <h1>Guayerd - MELI</h1>
-        {/*<Demo />*/}
-        <SearchBox search={this.search}/>
-        <ResultList items={this.state.items.results || []}/>
+        <h1>Movie App</h1>
+      
+        <SearchMovie search={this.search}/>
+       <ResultList items={this.state.items || []}/>
         {/*<ResultItem/>*/}
       </div>
     );

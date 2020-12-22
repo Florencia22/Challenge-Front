@@ -1,19 +1,19 @@
 import React from 'react';
 
-class SearchBox extends React.Component {
+class SearchMovie extends React.Component {
     constructor(props){
         super(props);
         this.state = {
-            producto:""
+            movie:""
         }
     }
     handleChange = (e) =>{
-        this.setState({ producto: e.target.value})
+        this.setState({ movie: e.target.value})
     }
     handleClick = () =>{
-        const PRODUCTOSEARCH = this.state.producto;
-        console.log(PRODUCTOSEARCH);
-        return this.props.search(PRODUCTOSEARCH)
+        const MOVIESEARCH = this.state.movie;
+       
+        return this.props.search(MOVIESEARCH)
     }
 
     render() {
@@ -30,4 +30,4 @@ class SearchBox extends React.Component {
     }
 }
 
-export default SearchBox;
+export default SearchMovie;

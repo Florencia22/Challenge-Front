@@ -14,8 +14,7 @@ class ResultList extends React.Component {
                 <div>
                 {this.props.items.map((item)=>{
                     return(
-                        <ResultItem  title={item.title} imgUrl={item.thumbnail} 
-                        precio={item.price}/>
+                        <ResultItem  title={item.title} imagen={`https://image.tmdb.org/t/p/w500${item.poster_path}`} overview={item.overview} />
                     )
                 })}
                 </div>
